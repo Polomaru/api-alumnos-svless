@@ -7,7 +7,7 @@ provider:
   timeout: 30  
   iam:
     role: arn:aws:iam::157403467473:role/LabRole
-    
+
 functions:
   listar:
     handler: ListarAlumnos.lambda_handler
@@ -32,7 +32,7 @@ functions:
     events:
       - http:
           path: /alumnos/leer
-          method: post
+          method: get
           cors: true
           integration: lambda
 
@@ -41,7 +41,7 @@ functions:
     events:
       - http:
           path: /alumnos/modificar
-          method: post
+          method: put
           cors: true
           integration: lambda
 
@@ -50,6 +50,6 @@ functions:
     events:
       - http:
           path: /alumnos/eliminar
-          method: post
+          method: delete
           cors: true
           integration: lambda

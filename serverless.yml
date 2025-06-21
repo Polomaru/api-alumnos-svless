@@ -1,0 +1,55 @@
+org: polomaru
+service: api-alumnos
+
+provider:
+  name: aws
+  runtime: python3.12
+  timeout: 30  
+  iam:
+    role: arn:aws:iam::157403467473:role/LabRole
+    
+functions:
+  listar:
+    handler: ListarAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/listar
+          method: post
+          cors: true
+          integration: lambda
+
+  crear:
+    handler: CrearAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/crear
+          method: post
+          cors: true
+          integration: lambda
+
+  leer:
+    handler: LeerAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/leer
+          method: post
+          cors: true
+          integration: lambda
+
+  modificar:
+    handler: ModificarAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/modificar
+          method: post
+          cors: true
+          integration: lambda
+
+  eliminar:
+    handler: EliminarAlumno.lambda_handler
+    events:
+      - http:
+          path: /alumnos/eliminar
+          method: post
+          cors: true
+          integration: lambda
